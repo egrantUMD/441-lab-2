@@ -20,28 +20,28 @@ GPIO.setup(p4, GPIO.OUT)
 GPIO.setup(p5, GPIO.OUT)
 
 
-try:
-  #function to blink
-  def blinky(pin):
-    global p3
-    global p4
 
-    if pin == 17:
-      while GPIO.input(pin)  :
-        GPIO.output(p3, 0) 
-        sleep(1000)
-        GPIO.output(p3, 1) 
-        sleep(1000) 
-    elif pin == 27:
-      while GPIO.input(pin)  :
-        GPIO.output(p3, 0) 
-        sleep(1000)
-        GPIO.output(p3, 1) 
-        sleep(1000)
-  
+#function to blink
+def blinky(pin):
+  global p3
+  global p4
+
+  if pin == 17:
+    while GPIO.input(pin)  :
+      GPIO.output(p3, 0) 
+      sleep(1000)
+      GPIO.output(p3, 1) 
+      sleep(1000) 
+  elif pin == 27:
+    while GPIO.input(pin)  :
+      GPIO.output(p3, 0) 
+      sleep(1000)
+      GPIO.output(p3, 1) 
+      sleep(1000)
+try: 
   #detect ports
-  GPIO.add_event_detect(p1, GPIO.RISING, pin = blinky, bouncetime=100)
-  GPIO.add_event_detect(p2, GPIO.RISING, pin = blinky, bouncetime=100)
+  GPIO.add_event_detect(p1,GPIO.RISING,callback=blinky, bouncetime=100)
+  GPIO.add_event_detect(p2,GPIO.RISING,callback=blinky, bouncetime=100)
 
   while True:
 
