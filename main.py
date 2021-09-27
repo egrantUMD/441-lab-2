@@ -54,4 +54,6 @@ except KeyboardInterrupt: # if user hits ctrl-C
     print("\nexiting")
   
   
-GPIO.cleanup()  
+  
+finally:
+  GPIO.cleanup()
