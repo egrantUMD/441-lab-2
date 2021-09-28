@@ -46,11 +46,10 @@ try:
   GPIO.add_event_detect(p2,GPIO.RISING,callback=blinky, bouncetime=100)
 
   while True:
-
     GPIO.output(p5, 0) 
-    sleep(500)
+    sleep(0.5)
     GPIO.output(p5, 1) 
-    sleep(500)
+    sleep(0.5)
 
 except KeyboardInterrupt: # if user hits ctrl-C
     print("\nexiting")
