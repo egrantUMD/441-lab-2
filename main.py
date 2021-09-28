@@ -19,6 +19,8 @@ GPIO.setup(p3, GPIO.OUT)
 GPIO.setup(p4, GPIO.OUT)
 GPIO.setup(p5, GPIO.OUT)
 
+pwm = GPIO.PWM(p3, 100) 
+pwm = GPIO.PWM(p4, 100) 
 
 
 #function to blink
@@ -27,17 +29,17 @@ def blinky(pin):
   global p4
 
   if pin == 17:
-    while GPIO.input(pin)  :
+    while GPIO.input(pin) :
       GPIO.output(p3, 0) 
-      sleep(1000)
+      sleep(0.5)
       GPIO.output(p3, 1) 
-      sleep(1000) 
+      sleep(0.5)
   elif pin == 27:
-    while GPIO.input(pin)  :
-      GPIO.output(p3, 0) 
-      sleep(1000)
-      GPIO.output(p3, 1) 
-      sleep(1000)
+    while GPIO.input(pin) :
+      GPIO.output(p4, 0) 
+      sleep(0.5)
+      GPIO.output(p4, 1) 
+      sleep(0.5)
 try: 
   #detect ports
   GPIO.add_event_detect(p1,GPIO.RISING,callback=blinky, bouncetime=100)
